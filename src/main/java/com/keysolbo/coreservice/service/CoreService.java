@@ -20,7 +20,7 @@ public class CoreService {
     public List<ArchivosCargados> retrieveArchivosCargados(String serviceComplain) {
         return manageNacional.retrieveArchivosCargados(serviceComplain);
     }
-    public Procesos retrieveAllServiceComplain(){
+    public List<Procesos> retrieveAllServiceComplain(){
         return manageNacional.retrieveAllServiceComplain();
     }
 

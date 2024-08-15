@@ -31,8 +31,8 @@ public class CoreController {
         return ResponseEntity.status(200).body(archivos);
     }
     @GetMapping("/procesos")
-    public ResponseEntity<Procesos> retrieveAllServiceComplain() {
-        Procesos archivos = coreService.retrieveAllServiceComplain();
+    public ResponseEntity<List<Procesos>> retrieveAllServiceComplain() {
+        List<Procesos> archivos = coreService.retrieveAllServiceComplain();
         return ResponseEntity.status(200).body(archivos);
     }
 

@@ -61,21 +61,24 @@ public class ManageNacional {
         return result;
     }
 
-    public Procesos retrieveAllServiceComplain() {
+    public List<Procesos> retrieveAllServiceComplain() {
         String sqlSelect = "SELECT DISTINCT service_complain " +
                 " FROM deaxs_record.ns_archivos_cargados " +
-                " WHERE status!= 'I' " +
+                " WHERE status != 'I' " +
                 " ORDER BY 1 ASC";
 
-        List<String> serviceComplainList = new ArrayList<>();
+        List<Procesos> serviceComplainList = new ArrayList<>();
+
         try {
-            serviceComplainList = jdbcTemplate.query(sqlSelect, (rs, row) -> rs.getString("service_complain"),
-                    new String[] {});
+            serviceComplainList = jdbcTemplate.query(
+                    sqlSelect,
+                    (rs, rowNum) -> new Procesos(rs.getString("service_complain")), // Mapeo a objetos Procesos
+                    new String[] {}); // Parámetros adicionales, en este caso no hay ninguno
         } catch (Exception ex) {
             log.error("retrieveAllServiceComplain fail", ex);
         }
 
-        return new Procesos(serviceComplainList);
+        return serviceComplainList;
     }
 
 }

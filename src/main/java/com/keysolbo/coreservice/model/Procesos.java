@@ -12,6 +12,5 @@ import lombok.ToString;
 @Data
 @ToString
 public class Procesos {
- private List<String> serviceComplain;
- 
-}
+ private String serviceComplain;
+ }
